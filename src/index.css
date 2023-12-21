@@ -5,9 +5,10 @@ html {
   color-scheme: light dark;
 }
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
+  max-width: 1600px;
   min-width: 280px;
   min-height: 100dvh;
 }

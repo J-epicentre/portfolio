@@ -1,5 +1,7 @@
+import Layout from './layout/Layout';
+
 function App() {
-  return <div>Hello Epicenter!</div>;
+  return <Layout />;
 }
 
 export default App;
