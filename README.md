@@ -19,6 +19,8 @@
 업무역량, 협업 능력 향상과 사이드프로젝트를 진행하여
 세상에 지각변동을 일으키는 동아리입니다.
 
+---
+
 ### 팀 소개
 
 - 디자이너 : 오주연
@@ -28,11 +30,24 @@
 
 ### 팀 기술 스택
 
-<code>
-  Skills = {
+```javascript
+  const Skills = {
     Design: "Figma",
-    Frontend : {"React", TypeScript},
+    Frontend : {"React", "TypeScript"},
     Backend : {"Python", "Java"},
     AppDev : {"React-Native", "Expo"}
   }
-</code>
+```
+
+### 팀 규칙
+
+- 매주 수요일 정기 모임 (저녁7시)
+- 각자 업무에 지장가지 않도록 하기
+- 프로젝트를 완성할때마다 기능소개, 기술스택 등 정리 (프로젝트 회고)
+
+---
+
+#### 질문있으신가요? 아래 연락처로 알려주세요.
+
+- Github: https://github.com/J-epicentre
+- E-mail: jepicentre@gmail.com
