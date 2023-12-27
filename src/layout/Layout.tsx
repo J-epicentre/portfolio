@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo_color_break from '../assets/images/logo_color_break.svg';
+import TeamProjects from '../components/TeamProjectsSection/TeamProjects';
 
 const Layout: React.FC = () => {
+  // 메인 페이지 레이아웃입니다. 컴포넌트는 Main태그 안에 넣어주세요.
   return (
     <>
       <Header>
@@ -25,7 +27,10 @@ const Layout: React.FC = () => {
           </ul>
         </GlobalNavBar>
       </Header>
-      <Main></Main>
+      <Main>
+        {/* 컴포넌트는 이곳에 넣어주세요. */}
+        <TeamProjects />
+      </Main>
     </>
   );
 };
