@@ -14,7 +14,11 @@ const AboutH1 = styled.h1`
   text-align: center;
   text-transform: uppercase;
 `;
-
+const ContentWrapper = styled.div`
+  width: 1200px;
+  height: 480px;
+  margin: 0 auto;
+`;
 const AnnounceText = styled.p`
   font-size: 30px;
   font-weight: 300;
@@ -30,4 +34,5 @@ export default {
   MainContainer,
   AboutH1,
   AnnounceText,
+  ContentWrapper
 }
