@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const TeamProjectsSectionWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
   padding: 100px 0;
   @media (max-width: 990px) {
     padding: 80px 0;
@@ -11,11 +13,13 @@ const TeamProjectsSectionWrapper = styled.section`
 `;
 
 const TeamProjectsSectionTitle = styled.div`
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   & > h2 {
+    top: 100px;
     font-size: 36px;
     font-weight: 800;
     margin: 0;
