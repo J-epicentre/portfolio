@@ -76,7 +76,6 @@ const Header = styled.header<HeaderProps>`
   width: 100%;
   position: sticky;
   top: ${({ $isHide }) => ($isHide ? '-80px' : '0')};
-  margin-bottom: 100vh;
   transition: top 0.3s ease-in-out;
   z-index: 100;
   & > h1 {
