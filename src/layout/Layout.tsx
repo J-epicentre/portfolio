@@ -46,6 +46,7 @@ const Header = styled.header`
   width: 100%;
   position: sticky;
   top: 0;
+  margin-bottom: 100vh;
   z-index: 100;
   & > h1 {
     & > a {
