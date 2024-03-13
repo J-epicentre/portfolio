@@ -45,10 +45,14 @@ const Avatar = styled.img`
   object-fit: cover; 
   animation: ${AvatarAnimation} 0.2s linear;
 `;
+const CommonAccordionWrapper = styled.div`
+  width: 700px;
+`;
 export default {
   MainContainer,
   ContentWrapper,
   JobTitle,
   Divider,
-  Avatar
+  Avatar,
+  CommonAccordionWrapper
 }
