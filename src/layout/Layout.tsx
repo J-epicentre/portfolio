@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import logo_color_break from '../assets/images/logo_color_break.svg';
 import TeamProjects from '../components/TeamProjectsSection/TeamProjects';
+import _ from 'lodash';
 import AboutSection from '../components/AboutSection/AboutSection';
 import InfoSection from '../components/InfoSection/InfoSection';
 
 const Layout: React.FC = () => {
   // 메인 페이지 레이아웃입니다. 컴포넌트는 Main태그 안에 넣어주세요.
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [isHidden, setIsHidden] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = _.throttle(() => {
+      const viewPosition = window.scrollY;
+      const isScrollingDown = scrollPosition < viewPosition;
+      const isScrollingUp = scrollPosition > viewPosition;
+      setIsHidden(isScrollingDown && viewPosition > 200);
+
+      if (isScrollingUp) {
+        setIsHidden(false);
+      }
+
+      setScrollPosition(viewPosition);
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollPosition]);
+
   return (
     <>
-      <Header>
+      <Header $isHide={isHidden}>
         <h1>
           <a href='#'>
             <img src={logo_color_break} alt='main logo' />
@@ -41,7 +63,11 @@ const Layout: React.FC = () => {
 
 export default Layout;
 
-const Header = styled.header`
+interface HeaderProps {
+  $isHide: boolean;
+}
+
+const Header = styled.header<HeaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -49,7 +75,9 @@ const Header = styled.header`
   height: 80px;
   width: 100%;
   position: sticky;
-  top: 0;
+  top: ${({ $isHide }) => ($isHide ? '-80px' : '0')};
+  margin-bottom: 100vh;
+  transition: top 0.3s ease-in-out;
   z-index: 100;
   & > h1 {
     & > a {
@@ -83,4 +111,5 @@ const GlobalNavBar = styled.nav`
 `;
 const Main = styled.main`
   width: 100%;
+  overflow-x: clip;
 `;
