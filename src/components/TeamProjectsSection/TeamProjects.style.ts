@@ -1,4 +1,34 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
+interface TeamProjectsSectionWrapperProps {
+  $wave: boolean;
+}
+
+const stepingUp = keyframes`
+  0% {
+    transform: translate(0);
+  } 10% {
+    transform: translate(-5px, -1px);
+  } 20% {
+    transform: translate(0, -1px);
+  } 30% {
+    transform: translate(-5px, -1px);
+  } 40% {
+    transform: translate(0, -2px);
+  } 50% {
+    transform: translate(-5px, -2px);
+  } 60% {
+    transform: translate(0, -3px);
+  } 70% {
+    transform: translate(-5px, -3px);
+  } 80% {
+    transform: translate(0, -4px);
+  } 90% {
+    transform: translate(-5px, -4px);
+  } 100% {
+    transform: translate(0, -5px);
+  }
+`;
 
 const TeamProjectsSectionWrapper = styled.section`
   display: flex;
@@ -32,12 +62,19 @@ const TeamProjectsSectionTitle = styled.div`
   }
 `;
 
-const TeamProjectsWrapper = styled.div`
+const TeamProjectsWrapper = styled.div<TeamProjectsSectionWrapperProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   background-color: #a67c52;
+  ${({ $wave }) =>
+    $wave &&
+    css`
+      transform: translateY(-5px);
+      transition: all 1s ease;
+      animation: ${stepingUp} 1s ease;
+    `}
 `;
 
 const TeamProjectCardWrapper = styled.div`

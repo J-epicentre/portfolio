@@ -17,7 +17,7 @@ const leafFall = keyframes`
   } 80% {
     transform: translate(-120%, 240%) scale(0.6) rotate(0deg);
   } 100% {
-    transform: translate(-120%, 450%) scale(0.6) rotate(0deg);
+    transform: translate(-120%, 500%) scale(0.6) rotate(0deg);
   }
 `;
 
@@ -63,7 +63,7 @@ const FlyingMan = styled.img<FlyingManProps>`
     $isLeave &&
     css`
       transform: translate(-120%, 500%) scale(0.6);
-      animation: ${leafFall} 3s ease-out;
+      animation: ${leafFall} 3.5s ease-out;
     `}
 `;
 
