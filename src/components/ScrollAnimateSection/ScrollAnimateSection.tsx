@@ -5,7 +5,7 @@ import upperGround from '../../assets/images/ground-02.png';
 import upperGroundHalf1 from '../../assets/images/ground-03.png';
 import upperGroundHalf2 from '../../assets/images/ground-04.png';
 import underGround from '../../assets/images/ground-05 1.png';
-import flyingMan from '../../assets/images/flying_man.svg';
+import flyingMan from '../../assets/images/person.svg';
 
 interface IntersectionObserverEntry {
   isIntersecting: boolean;

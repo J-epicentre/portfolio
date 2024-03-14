@@ -33,12 +33,12 @@ const stepingUp = keyframes`
 const TeamProjectsSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 100px 0;
+  padding: 100px 0 0;
   @media (max-width: 990px) {
-    padding: 80px 0;
+    padding: 80px 0 0;
   }
   @media (max-width: 575px) {
-    padding: 60px 0;
+    padding: 60px 0 0;
   }
 `;
 
@@ -67,6 +67,8 @@ const TeamProjectsWrapper = styled.div<TeamProjectsSectionWrapperProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-bottom: 100px;
+  margin-bottom: -5px;
   background-color: #a67c52;
   ${({ $wave }) =>
     $wave &&
@@ -89,6 +91,7 @@ const TeamProjectCardWrapper = styled.div`
 `;
 
 const TeamProjectCard = styled.div`
+  position: relative;
   width: 282px;
   height: 445px;
   display: flex;
@@ -96,6 +99,17 @@ const TeamProjectCard = styled.div`
   justify-content: center;
   background-color: #fff;
   border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    width: 250px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    filter: blur(10px);
+  }
 `;
 
 const Style = {

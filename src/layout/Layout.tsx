@@ -57,6 +57,9 @@ const Layout: React.FC = () => {
         <InfoSection />
         <TeamProjects />
       </Main>
+      <Footer>
+        <p>Copyright ⓒ 주진원지 All rights reserved</p>
+      </Footer>
     </>
   );
 };
@@ -111,4 +114,16 @@ const GlobalNavBar = styled.nav`
 const Main = styled.main`
   width: 100%;
   overflow-x: clip;
+`;
+const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b88f63;
+  color: #fff;
+  height: 180px;
+  width: 100%;
+  & > p {
+    font-size: 16px;
+  }
 `;
