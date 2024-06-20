@@ -9,6 +9,7 @@ interface IntersectionObserverEntry {
 
 const TeamProjects: React.FC = () => {
   const [earthquake, setEarthquake] = useState<boolean>(false);
+  const [mousehover, setMousehover] = useState<boolean>(false);
   const earthRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,8 +20,6 @@ const TeamProjects: React.FC = () => {
         (entry) => {
           if (entry.isIntersecting) {
             setEarthquake(true);
-          } else {
-            setEarthquake(false);
           }
         },
         { root: null, rootMargin: '500px 0 0 0', threshold: 0.5 }
@@ -30,7 +29,9 @@ const TeamProjects: React.FC = () => {
     if (wavingEarth) observer.observe(wavingEarth);
 
     return () => {
-      if (wavingEarth) observer.unobserve(wavingEarth);
+      if (wavingEarth) {
+        observer.unobserve(wavingEarth);
+      }
     };
   }, []);
 
@@ -41,12 +42,16 @@ const TeamProjects: React.FC = () => {
       </Style.TeamProjectsSectionTitle>
       <ScrollAnimateSection />
       <Style.TeamProjectsWrapper ref={earthRef} $wave={earthquake}>
-        <Style.TeamProjectCardWrapper>
-          <Style.TeamProjectCard>포폴 1</Style.TeamProjectCard>
-          <Style.TeamProjectCard>포폴 2</Style.TeamProjectCard>
-          <Style.TeamProjectCard>포폴 3</Style.TeamProjectCard>
-          <Style.TeamProjectCard>포폴 4</Style.TeamProjectCard>
-        </Style.TeamProjectCardWrapper>
+        <Style.TeamProjectCardRow>
+          <Style.CardWrapper
+            onMouseEnter={() => setMousehover(true)}
+            onMouseLeave={() => setMousehover(false)}
+            $hovered={mousehover}
+          >
+            <Style.TeamProjectCard>포폴 1</Style.TeamProjectCard>
+            <Style.CardShadow></Style.CardShadow>
+          </Style.CardWrapper>
+        </Style.TeamProjectCardRow>
       </Style.TeamProjectsWrapper>
     </Style.TeamProjectsSectionWrapper>
   );

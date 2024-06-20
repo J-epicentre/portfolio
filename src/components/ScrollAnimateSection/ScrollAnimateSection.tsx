@@ -22,17 +22,22 @@ const ScrollAnimateSection: React.FC = () => {
     const enteringCurrent = ref1.current;
     const leavingCurrent = ref2.current;
 
+    const observerOptions = { root: null, rootMargin: '600px 0 600px 0', threshold: 0.5 };
+
     const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-      entries.forEach(
-        (entry) => {
-          if (entry.target === enteringCurrent) {
-            setEntering(entry.isIntersecting);
-          } else if (entry.target === leavingCurrent) {
-            setLeaving(entry.isIntersecting);
+      entries.forEach((entry) => {
+        if (entry.target === enteringCurrent) {
+          setEntering(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            observer.unobserve(enteringCurrent);
           }
-        },
-        { root: null, rootMargin: '600px 0 600px 0', threshold: 0.5 }
-      );
+        } else if (entry.target === leavingCurrent) {
+          setLeaving(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            observer.unobserve(leavingCurrent);
+          }
+        }
+      }, observerOptions);
     });
 
     if (enteringCurrent) observer.observe(enteringCurrent);
