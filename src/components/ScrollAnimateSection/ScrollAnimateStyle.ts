@@ -15,7 +15,7 @@ const leafFall = keyframes`
   } 60% {
     transform: translate(-118%, 180%) scale(0.7) rotate(-5deg);
   } 80% {
-    transform: translate(-120%, 240%) scale(0.6) rotate(0deg);
+    transform: translate(-120%, 240%) scale(0.7) rotate(0deg);
   } 100% {
     transform: translate(-120%, 500%) scale(0.6) rotate(0deg);
   }
@@ -51,6 +51,7 @@ const FlyingMan = styled.img<FlyingManProps>`
   position: absolute;
   top: 50px;
   right: -500px;
+  width: 756px;
   transform: translate(0, 0) scale(1);
   transition: all 2s ease;
   ${({ $isEnter }) =>

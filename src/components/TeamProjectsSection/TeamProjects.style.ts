@@ -4,6 +4,10 @@ interface TeamProjectsSectionWrapperProps {
   $wave: boolean;
 }
 
+interface CardWrapperProps {
+  $hovered: boolean;
+}
+
 const stepingUp = keyframes`
   0% {
     transform: translate(0);
@@ -30,15 +34,32 @@ const stepingUp = keyframes`
   }
 `;
 
+const bouncing = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  } 50% {
+    transform: translateY(-10px);
+  }
+`;
+
+const shadow = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  } 50% {
+    transform: scale(0.9);
+  }
+
+`;
+
 const TeamProjectsSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 100px 0;
+  padding: 100px 0 0;
   @media (max-width: 990px) {
-    padding: 80px 0;
+    padding: 80px 0 0;
   }
   @media (max-width: 575px) {
-    padding: 60px 0;
+    padding: 60px 0 0;
   }
 `;
 
@@ -64,9 +85,12 @@ const TeamProjectsSectionTitle = styled.div`
 
 const TeamProjectsWrapper = styled.div<TeamProjectsSectionWrapperProps>`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-bottom: 100px;
+  margin-bottom: -5px;
   background-color: #a67c52;
   ${({ $wave }) =>
     $wave &&
@@ -77,7 +101,7 @@ const TeamProjectsWrapper = styled.div<TeamProjectsSectionWrapperProps>`
     `}
 `;
 
-const TeamProjectCardWrapper = styled.div`
+const TeamProjectCardRow = styled.div`
   max-width: 1200px;
   margin: 40px auto;
   display: flex;
@@ -87,7 +111,29 @@ const TeamProjectCardWrapper = styled.div`
   gap: 34px 14px;
   width: 100%;
 `;
-
+const CardWrapper = styled.div<CardWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  &:hover {
+    div:first-child {
+      ${({ $hovered }) =>
+        $hovered &&
+        css`
+          animation: ${bouncing} 0.6s infinite;
+        `};
+    }
+    div:last-child {
+      ${({ $hovered }) =>
+        $hovered &&
+        css`
+          animation: ${shadow} 0.6s infinite;
+        `};
+    }
+  }
+`;
 const TeamProjectCard = styled.div`
   width: 282px;
   height: 445px;
@@ -96,14 +142,24 @@ const TeamProjectCard = styled.div`
   justify-content: center;
   background-color: #fff;
   border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+`;
+const CardShadow = styled.div`
+  width: 250px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  filter: blur(10px);
 `;
 
 const Style = {
   TeamProjectsSectionWrapper,
   TeamProjectsSectionTitle,
   TeamProjectsWrapper,
-  TeamProjectCardWrapper,
+  CardWrapper,
+  TeamProjectCardRow,
   TeamProjectCard,
+  CardShadow,
 };
 
 export default Style;

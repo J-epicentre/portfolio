@@ -5,7 +5,7 @@ import upperGround from '../../assets/images/ground-02.png';
 import upperGroundHalf1 from '../../assets/images/ground-03.png';
 import upperGroundHalf2 from '../../assets/images/ground-04.png';
 import underGround from '../../assets/images/ground-05 1.png';
-import flyingMan from '../../assets/images/flying_man.svg';
+import flyingMan from '../../assets/images/person.svg';
 
 interface IntersectionObserverEntry {
   isIntersecting: boolean;
@@ -22,17 +22,22 @@ const ScrollAnimateSection: React.FC = () => {
     const enteringCurrent = ref1.current;
     const leavingCurrent = ref2.current;
 
+    const observerOptions = { root: null, rootMargin: '600px 0 600px 0', threshold: 0.5 };
+
     const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-      entries.forEach(
-        (entry) => {
-          if (entry.target === enteringCurrent) {
-            setEntering(entry.isIntersecting);
-          } else if (entry.target === leavingCurrent) {
-            setLeaving(entry.isIntersecting);
+      entries.forEach((entry) => {
+        if (entry.target === enteringCurrent) {
+          setEntering(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            observer.unobserve(enteringCurrent);
           }
-        },
-        { root: null, rootMargin: '600px 0 600px 0', threshold: 0.5 }
-      );
+        } else if (entry.target === leavingCurrent) {
+          setLeaving(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            observer.unobserve(leavingCurrent);
+          }
+        }
+      }, observerOptions);
     });
 
     if (enteringCurrent) observer.observe(enteringCurrent);
